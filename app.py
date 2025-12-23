@@ -1,7 +1,10 @@
 from flask import Flask, render_template, jsonify, request
 from helper import preprocessing, vectorizer, get_prediction
+from logger import logging
 
 app = Flask(__name__)
+
+logging.info("Flask server started.")
 
 reviews = [
     
@@ -18,6 +21,9 @@ def index():
         'positive': positive,
         'negative': negative,
     }
+
+    logging.info('=====Open Home Page=====')
+
     return render_template('index.html', data=data)
 
 @app.route("/predict", methods=["POST"])
@@ -27,9 +33,16 @@ def predict():
     data = request.json
     review = data.get("review", "")
 
+    logging.info(f'Text received for prediction: {review}')
+
     preprocessed_txt = preprocessing(review)
+    logging.info(f'Preprocessed text: {preprocessed_txt}')
+
     vectorized_txt = vectorizer(preprocessed_txt)
+    logging.info(f'Vectorized text: {vectorized_txt}')
+
     result = get_prediction(vectorized_txt)
+    logging.info(f'Prediction result: {result}')
 
     if result == 'positive':
         positive += 1
