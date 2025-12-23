@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopSense AI · Sentiment Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Pathirana AI</p>
+          <h1>Review Sentiment Analyzer</h1>
+          <p class="lede">
+            Test how your customers feel about a product review in seconds.
+            Paste a snippet, run the model, and share the insight.
+          </p>
+          <div class="chips">
+            <span class="chip">Real-time scoring</span>
+            <span class="chip">Confidence insights</span>
+            <span class="chip">Product-ready UI</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="product-meta">
+            <div>
+              <p class="label">Product</p>
+              <h3>Wireless Bluetooth Headphones</h3>
+              <p class="muted">Category · Electronics</p>
+            </div>
+            <div class="stat">
+              <span class="score">4.4★</span>
+              <span class="muted">User rating</span>
+            </div>
+          </div>
+          <p class="muted">
+            High-quality wireless headphones with noise cancellation and long
+            battery life.
+          </p>
+          <div class="sentiment-pulse">
+            <div class="pulse-bar positive"></div>
+            <div class="pulse-bar negative"></div>
+          </div>
+          <div class="legend">
+            <span>Positive • 0</span>
+            <span>Negative • 0</span>
+          </div>
+        </div>
+      </header>
+      <main class="grid">
+        <div>
+          <img
+            src="{{ url_for('static', filename='image.webp') }}"
+            alt="Wireless Headphones"
+            class="product-image img-fluid"
+          />
+        </div>
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Try a review</p>
+              <h4>Analyze sentiment</h4>
+            </div>
+            <button class="ghost" onclick="randomReview()">Use sample</button>
+          </div>
+          <textarea
+            id="reviewText"
+            name="text"
+            rows="5"
+            placeholder="Type or paste a customer review..."
+          ></textarea>
+          <button class="primary" onclick="analyzeSentiment()">
+            Analyze Sentiment
+          </button>
+          <div id="resultBox" class="result hide">
+            <div class="pill" id="sentimentText"></div>
+            <p id="confidenceText" class="muted"></p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Recent samples</p>
+              <h4>What people said</h4>
+            </div>
+          </div>
+          <ul class="review-list">
+            {% for review in data.reviews %}
+            <li>
+              <span class="dot"></span>
+              <span>{{ review }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span class="muted"
+          >© 2025 Pathirana AI · Sentiment Analysis for Online Reviews</span
+        >
+        <a href="/health" class="muted">Health check</a>
+      </footer>
+    </div>
+    <!-- ================= JavaScript ================= -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

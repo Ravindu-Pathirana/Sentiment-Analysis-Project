@@ -1,0 +1,344 @@
+/* --------------------------------------------------
+   Global
+-------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(
+    circle at 10% 20%,
+    #f3f7ff,
+    #e1eef7 35%,
+    #fdf6ec 70%
+  );
+  color: #1b2733;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.muted {
+  color: #55657a;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7b8aa0;
+}
+
+.eyebrow {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #7b8aa0;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+h3 {
+  margin: 0;
+}
+h4 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.lede {
+  max-width: 640px;
+  color: #3c4a5a;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 8px 12px;
+  background: rgba(27, 167, 121, 0.12);
+  color: #118a62;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* --------------------------------------------------
+   Hero
+-------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.hero-card {
+  background: #0f172a;
+  color: #f7fbff;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stat {
+  text-align: right;
+}
+
+.score {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.sentiment-pulse {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 14px 0 8px;
+}
+
+.pulse-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.pulse-bar.positive {
+  background: linear-gradient(90deg, #34d399, #0ea5e9);
+}
+.pulse-bar.negative {
+  background: linear-gradient(90deg, #f87171, #f59e0b);
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(247, 251, 255, 0.75);
+  font-size: 13px;
+}
+
+/* --------------------------------------------------
+   Grid layout
+-------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.panel {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #e5e9f2;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.05);
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid #d7dde8;
+  color: #1b2733;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ghost:hover {
+  border-color: #1ba779;
+  color: #118a62;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid #d7dde8;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 15px;
+  resize: vertical;
+  min-height: 140px;
+  color: #1b2733;
+  background: #f9fbff;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #1ba779;
+  box-shadow: 0 0 0 4px rgba(27, 167, 121, 0.15);
+}
+
+.primary {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1ba779, #0ea5e9);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(14, 165, 233, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(14, 165, 233, 0.3);
+}
+.primary:active {
+  transform: translateY(0);
+}
+
+.result {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e9f2;
+  display: grid;
+  gap: 6px;
+}
+
+.result.hide {
+  display: none;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e7f6ef;
+  color: #10734f;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.result.negative .pill {
+  background: #fff1f1;
+  color: #b42318;
+}
+.result.positive .pill {
+  background: #e7f6ef;
+  color: #10734f;
+}
+
+.review-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-top: 6px;
+  max-height: 320px;     
+  overflow-y: auto;         
+  padding-right: 6px;       
+}
+
+.review-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #eef2f7;
+  border-radius: 10px;
+  background: #fbfdff;
+  color: #233041;
+}
+
+.review-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.review-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.review-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #1ba779, #0ea5e9);
+  border-radius: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1ba779, #0ea5e9);
+  flex-shrink: 0;
+}
+
+.footer {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e9f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------
+   CSS for images
+-------------------------------------------------- */
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.product-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
